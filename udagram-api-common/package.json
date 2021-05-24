@@ -1,0 +1,26 @@
+{
+  "name": "udagram-api-common",
+  "version": "2.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "clean": "rm -rf dist/ || true",
+    "build": "npm run clean && tsc"
+  },
+  "keywords": [],
+  "author": "Mauricio Maia",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.429.0",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^11.11.6",
+    "@typescript-eslint/eslint-plugin": "^2.19.2",
+    "@typescript-eslint/parser": "^2.19.2",
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0",
+    "typescript": "^3.3.4000"
+  }
+}
