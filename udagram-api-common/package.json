@@ -6,7 +6,7 @@
   "scripts": {
     "tsc": "tsc",
     "clean": "rm -rf dist/ || true",
-    "build": "npm run clean && tsc"
+    "build": "npm run clean && tsc && npm pack && cp *.tgz ../udagram-api-feed/ && cp *.tgz ../udagram-api-users/"
   },
   "keywords": [],
   "author": "Mauricio Maia",

@@ -1,2 +1,4 @@
 .idea/
 *.tgz
+udagram-api-common/dist/
+udagram-api-common/node_modules/
