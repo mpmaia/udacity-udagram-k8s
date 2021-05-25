@@ -1,0 +1,42 @@
+language: node_js
+node_js:
+  - 12
+
+services:
+  - docker
+
+install:
+  - npm install -g ionic
+
+before_script:
+  - npm -v
+  - docker --version
+
+script:
+  - cd udagram-api-common
+  - npm install
+  - npm run build
+  - cd ..
+  - cd udagram-api-feed
+  - npm install
+  - npm run build
+  - docker build . -t mpmaia/udagram-api-feed
+  - docker tag mpmaia/udagram-api-feed mpmaia/udagram-api-feed:latest
+  - cd ..
+  - cd udagram-api-users
+  - npm install
+  - npm run build
+  - docker build . -t mpmaia/udagram-api-users
+  - docker tag mpmaia/udagram-api-users mpmaia/udagram-api-users:latest
+  - cd ..
+  - cd udagram-frontend
+  - npm install
+  - ionic build
+  - docker build . -t mpmaia/udagram-frontend
+  - docker tag mpmaia/udagram-frontend mpmaia/udagram-frontend:latest
+
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push mpmaia/udagram-api-feed
+  - docker push mpmaia/udagram-api-users
+  - docker push mpmaia/udagram-frontend
