@@ -29,7 +29,7 @@
     "reflect-metadata": "^0.1.13",
     "sequelize": "^5.21.4",
     "sequelize-typescript": "^0.6.9",
-    "dotenv": "^8.2.0"
+    "udagram-api-common": "file:./udagram-api-common-2.0.0.tgz"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.26",
