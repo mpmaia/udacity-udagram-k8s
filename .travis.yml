@@ -34,9 +34,14 @@ script:
   - ionic build --prod
   - docker build . -t mpmaia/udagram-frontend
   - docker tag mpmaia/udagram-frontend mpmaia/udagram-frontend:latest
+  - cd ..
+  - cd udagram-reverse-proxy
+  - docker build . -t mpmaia/udagram-reverse-proxy
+  - docker tag mpmaia/udagram-reverse-proxy mpmaia/udagram-reverse-proxy:latest
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push mpmaia/udagram-api-feed
   - docker push mpmaia/udagram-api-users
   - docker push mpmaia/udagram-frontend
+  - docker push mpmaia/udagram-reverse-proxy
